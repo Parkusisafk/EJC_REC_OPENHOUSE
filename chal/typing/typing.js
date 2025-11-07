@@ -8,8 +8,17 @@ const WORDS = [
   "while","return","function","class","import","export",
   "if","else","for","const","let","true","false","switch",
   "case","break","continue","try","catch","async","await",
-  "new","delete","typeof","this","yield","object","array",
-  "string","number","boolean","prototype"
+  "new","delete","typeof","this","object","array",
+  "string","number","boolean","prototype","int","long",
+  "database","main","python","java","javascript","compiler",
+  "linux","commandline",
+  "pointer","memory","character","null","void","NaN","undefined",
+  "github","server","byte","bit","quadword","shell","exploit",
+  "error","timeout","debugging","decompile",
+  "compression","input","output","buffer","stackoverflow",
+  "gitlab","gitpush","ipaddress","DNS","http","https",
+  "port","request","response","header",
+  "footer","hash","cryptography","packets","automation"
 ];
 
 const MAX_BUBBLES = 5;
@@ -163,8 +172,8 @@ function loop(now) {
 
     // move bubble down
     const top = parseFloat(b.style.top || 0);
-    const scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.25) - 0.6);
-
+    let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.20) - 0.6);
+    if(timeElapsed > 30) scaledSpeed = Math.pow(scaledSpeed,Math.pow(Math.log10(timeElapsed),0.5))
     const dy = scaledSpeed * dt;
     const newTop = top + dy;
     b.style.top = newTop + "px";
@@ -228,7 +237,7 @@ document.addEventListener("keydown", (e) => {
       b.progress++;
       renderBubble(b);
 
-      // completed
+      // leted
       if (b.progress >= b.word.length) {
         // increment score immediately
         score += 1;
