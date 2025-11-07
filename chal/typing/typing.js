@@ -118,7 +118,7 @@ function renderBubble(b) {
   if (p > 0) {
     const head = escapeHtml(w.slice(0, p));
     const tail = escapeHtml(w.slice(p));
-    span.innerHTML = `<span style="color:yellow;font-weight:700">${head}</span><span style="color:black">${tail}</span>`;
+    span.innerHTML = `<span style="color:red;font-weight:700">${head}</span><span style="color:black">${tail}</span>`;
   } else {
     span.textContent = w;
     span.style.color = "black";
@@ -132,6 +132,15 @@ function renderBubble(b) {
 function escapeHtml(s){
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
+window.addEventListener('wheel', e => {
+  if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+
+window.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0')) {
+    e.preventDefault();
+  }
+});
 
 // main animation loop - moves bubbles down based on delta time so speed is consistent
 let lastTime = performance.now();
