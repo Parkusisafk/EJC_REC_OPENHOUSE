@@ -102,3 +102,30 @@ footer {
 .leaderboard-list li {
   margin-bottom: 0.2rem;
 }
+
+/* --- Admin Button --- */
+.admin-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 65, 108, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.admin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 65, 108, 0.4);
+  background: linear-gradient(135deg, #ff3c1f, #ff2f60);
+}
+
+.admin-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(255, 65, 108, 0.3);
+}

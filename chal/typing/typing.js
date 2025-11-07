@@ -154,7 +154,7 @@ function loop(now) {
 
     // move bubble down
     const top = parseFloat(b.style.top || 0);
-    const scaledSpeed = b.speed * Math.pow(Math.max(timeElapsed, 1), 0.3);
+    const scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.25) - 0.6);
 
     const dy = scaledSpeed * dt;
     const newTop = top + dy;
@@ -246,7 +246,10 @@ document.addEventListener("keydown", (e) => {
         candidateBuffer = "";
         // ensure other bubble progress is reset (they were candidates before)
         bubbles.forEach(bb => { if (bb !== b) { bb.progress = 0; renderBubble(bb); } });
+
+        return
       }
+      renderBubble(b);
     } else {
       // wrong key for focused bubble -> ignore (spec requirement)
       return;
@@ -302,15 +305,29 @@ function endGame() {
   if (!panel) {
     panel = document.createElement("div");
     panel.id = "game-over";
-    panel.innerHTML = `<h2>💥 Game Over</h2>
-                       <p>Player: <strong>${username}</strong></p>
-                       <p>Score: <span id="final-score">${score}</span></p>
-                       <a href="../../index.html" class="back-btn">← Back to Menu</a>`;
+    panel.innerHTML = `
+      <h2>💥 Game Over</h2>
+      <p>Player: <strong>${username}</strong></p>
+      <p>Score: <span id="final-score">${score}</span></p>
+      <div class="button-row">
+        <a href="../../index.html" class="back-btn">← Back to Menu</a>
+        <button id="restart-btn" class="restart-btn">Restart ↻</button>
+      </div>
+    `;
     document.body.appendChild(panel);
   } else {
     panel.querySelector("#final-score").textContent = score;
   }
   panel.style.display = "block";
+
+    panel.style.display = "block";
+
+  // restart button
+  const btn = panel.querySelector("#restart-btn");
+  btn.onclick = () => {
+    // reload the page but retain username
+    window.location.reload();
+  };
 
   // send score to backend
   console.log('hi')

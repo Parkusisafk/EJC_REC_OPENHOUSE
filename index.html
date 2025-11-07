@@ -22,77 +22,60 @@
       <h3>Mini Games</h3>
       <div class="game-list">
 
-<div class="game-card" data-leaderboard="chal/typing/leaderboard/leaderboard.txt">
-  <h4>💻 Typing Challenge</h4>
-  <p>
-    Totally original typing challenge where
-    you type programming keywords. Not stolen
-    from cyberthon at all!
-  </p>
+        <div class="game-card" data-leaderboard="chal/typing/leaderboard/leaderboard.txt">
+          <h4>💻 Typing Challenge</h4>
+          <p>Totally original typing challenge where you type programming keywords. Not stolen from cyberthon at all!</p>
+          <div class="leaderboard">
+            <h5>Leaderboard (Top 5)</h5>
+            <ol class="leaderboard-list"><li>Loading...</li></ol>
+          </div>
+          <input type="text" class="username" placeholder="Enter your username" />
+          <a href="#" class="play-btn" data-link="chal/typing/typing.html">Play Now</a>
+        </div>
 
-  <div class="leaderboard">
-    <h5>Leaderboard (Top 5)</h5>
-    <ol class="leaderboard-list">
-      <li>Loading...</li>
-    </ol>
-  </div>
+        <div class="game-card" data-leaderboard="chal/binary/leaderboard.txt">
+          <h4>🧩 Binary Puzzle</h4>
+          <p>Can you decode the message?</p>
+          <div class="leaderboard">
+            <h5>Leaderboard (Top 5)</h5>
+            <ol class="leaderboard-list"><li>Loading...</li></ol>
+          </div>
+          <input type="text" class="username" placeholder="Enter your username" />
+          <a href="#" class="play-btn" data-link="chal/binary.html">Play Now</a>
+        </div>
 
-  <input type="text" class="username" placeholder="Enter your username" />
-  <a href="#" class="play-btn" data-link="chal/typing/typing.html">Play Now</a>
-</div>
+        <div class="game-card" data-leaderboard="chal/encryption/leaderboard.txt">
+          <h4>🔐 Encryption Game</h4>
+          <p>Learn how ciphers work!</p>
+          <div class="leaderboard">
+            <h5>Leaderboard (Top 5)</h5>
+            <ol class="leaderboard-list"><li>Loading...</li></ol>
+          </div>
+          <input type="text" class="username" placeholder="Enter your username" />
+          <a href="#" class="play-btn" data-link="chal/encryption.html">Play Now</a>
+        </div>
 
-<div class="game-card" data-leaderboard="chal/binary/leaderboard.txt">
-  <h4>🧩 Binary Puzzle</h4>
-  <p>Can you decode the message?</p>
-
-  <div class="leaderboard">
-    <h5>Leaderboard (Top 5)</h5>
-    <ol class="leaderboard-list">
-      <li>Loading...</li>
-    </ol>
-  </div>
-
-  <input type="text" class="username" placeholder="Enter your username" />
-  <a href="#" class="play-btn" data-link="chal/binary.html">Play Now</a>
-</div>
-
-<div class="game-card" data-leaderboard="chal/encryption/leaderboard.txt">
-  <h4>🔐 Encryption Game</h4>
-  <p>Learn how ciphers work!</p>
-
-  <div class="leaderboard">
-    <h5>Leaderboard (Top 5)</h5>
-    <ol class="leaderboard-list">
-      <li>Loading...</li>
-    </ol>
-  </div>
-
-  <input type="text" class="username" placeholder="Enter your username" />
-  <a href="#" class="play-btn" data-link="chal/encryption.html">Play Now</a>
-</div>
-
-<div class="game-card" data-leaderboard="chal/logic/leaderboard.txt">
-  <h4>🕹️ Logic Simulator</h4>
-  <p>Build virtual logic gates and circuits.</p>
-
-  <div class="leaderboard">
-    <h5>Leaderboard (Top 5)</h5>
-    <ol class="leaderboard-list">
-      <li>Loading...</li>
-    </ol>
-  </div>
-
-  <input type="text" class="username" placeholder="Enter your username" />
-  <a href="#" class="play-btn" data-link="chal/logic.html">Play Now</a>
-</div>
+        <div class="game-card" data-leaderboard="chal/logic/leaderboard.txt">
+          <h4>🕹️ Logic Simulator</h4>
+          <p>Build virtual logic gates and circuits.</p>
+          <div class="leaderboard">
+            <h5>Leaderboard (Top 5)</h5>
+            <ol class="leaderboard-list"><li>Loading...</li></ol>
+          </div>
+          <input type="text" class="username" placeholder="Enter your username" />
+          <a href="#" class="play-btn" data-link="chal/logic.html">Play Now</a>
+        </div>
 
       </div>
+
+      <button id="clear-leaderboards" class="admin-btn">🧹 Clear All Leaderboards</button>
     </section>
   </main>
 
   <footer>
     <p>© 2025 REC Computing | Created for Open House</p>
   </footer>
+
   <script src="script.js"></script>
 
   <script>
@@ -101,7 +84,6 @@
     playBtns.forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        // find username input in the same card
         const card = btn.closest(".game-card");
         const usernameInput = card.querySelector(".username");
         const username = usernameInput.value.trim();
@@ -120,9 +102,49 @@
         setTimeout(() => {
           card.style.opacity = "1";
           card.style.transform = "translateY(0)";
-        }, i * 100); // stagger animation
+        }, i * 100);
       });
     });
+
+    // SHA-256 helper
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Clear leaderboard logic
+    document.getElementById("clear-leaderboards").addEventListener("click", async () => {
+  const pwd = prompt("Enter admin password:");
+  if (!pwd) return;
+  const hash = await sha256(pwd);
+  const correctHash = "b6444c25e10ad13e4472e9d243c8cc2b4bbe7fc73d79847e13a9d3da22f5b400";
+  if (hash !== correctHash) {
+    alert("Incorrect password!");
+    return;
+  }
+  if (!confirm("Are you sure you want to clear ALL leaderboards?")) return;
+
+  try {
+    const res = await fetch("/clear-leaderboards", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: pwd })
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert("All leaderboards cleared successfully!");
+      location.reload();
+    } else {
+      alert("Failed to clear: " + (data.message || "Unknown error"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Server error: could not clear leaderboards");
+  }
+});
+
   </script>
 </body>
 </html>
