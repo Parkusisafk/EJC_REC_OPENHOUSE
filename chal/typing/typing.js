@@ -172,7 +172,7 @@ function loop(now) {
 
     // move bubble down
     const top = parseFloat(b.style.top || 0);
-    let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.20) - 0.6);
+    let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.15) - 0.6);
     if(timeElapsed > 30) scaledSpeed = Math.pow(scaledSpeed,Math.pow(Math.log10(timeElapsed),0.5))
     const dy = scaledSpeed * dt;
     const newTop = top + dy;
