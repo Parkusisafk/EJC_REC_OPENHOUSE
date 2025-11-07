@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REC Open House | Computing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>REC Open House</h1>
+    <p class="subtitle">Subtitle</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Title</h2>
+      <p>Info</p>
+    </section>
+
+    <section class="games">
+      <h3>Mini Games</h3>
+      <div class="game-list">
+
+<div class="game-card" data-leaderboard="chal/typing/leaderboard/leaderboard.txt">
+  <h4>💻 Typing Challenge</h4>
+  <p>
+    Totally original typing challenge where
+    you type programming keywords. Not stolen
+    from cyberthon at all!
+  </p>
+
+  <div class="leaderboard">
+    <h5>Leaderboard (Top 5)</h5>
+    <ol class="leaderboard-list">
+      <li>Loading...</li>
+    </ol>
+  </div>
+
+  <input type="text" class="username" placeholder="Enter your username" />
+  <a href="#" class="play-btn" data-link="chal/typing/typing.html">Play Now</a>
+</div>
+
+<div class="game-card" data-leaderboard="chal/binary/leaderboard.txt">
+  <h4>🧩 Binary Puzzle</h4>
+  <p>Can you decode the message?</p>
+
+  <div class="leaderboard">
+    <h5>Leaderboard (Top 5)</h5>
+    <ol class="leaderboard-list">
+      <li>Loading...</li>
+    </ol>
+  </div>
+
+  <input type="text" class="username" placeholder="Enter your username" />
+  <a href="#" class="play-btn" data-link="chal/binary.html">Play Now</a>
+</div>
+
+<div class="game-card" data-leaderboard="chal/encryption/leaderboard.txt">
+  <h4>🔐 Encryption Game</h4>
+  <p>Learn how ciphers work!</p>
+
+  <div class="leaderboard">
+    <h5>Leaderboard (Top 5)</h5>
+    <ol class="leaderboard-list">
+      <li>Loading...</li>
+    </ol>
+  </div>
+
+  <input type="text" class="username" placeholder="Enter your username" />
+  <a href="#" class="play-btn" data-link="chal/encryption.html">Play Now</a>
+</div>
+
+<div class="game-card" data-leaderboard="chal/logic/leaderboard.txt">
+  <h4>🕹️ Logic Simulator</h4>
+  <p>Build virtual logic gates and circuits.</p>
+
+  <div class="leaderboard">
+    <h5>Leaderboard (Top 5)</h5>
+    <ol class="leaderboard-list">
+      <li>Loading...</li>
+    </ol>
+  </div>
+
+  <input type="text" class="username" placeholder="Enter your username" />
+  <a href="#" class="play-btn" data-link="chal/logic.html">Play Now</a>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 REC Computing | Created for Open House</p>
+  </footer>
+  <script src="script.js"></script>
+
+  <script>
+    // Enable all Play buttons
+    const playBtns = document.querySelectorAll(".play-btn");
+    playBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // find username input in the same card
+        const card = btn.closest(".game-card");
+        const usernameInput = card.querySelector(".username");
+        const username = usernameInput.value.trim();
+        if(!username){
+          alert("Please enter a username!");
+          return;
+        }
+        const link = btn.dataset.link;
+        window.location.href = link + "?username=" + encodeURIComponent(username);
+      });
+    });
+
+    // optional: fade-in animation
+    window.addEventListener("load", () => {
+      document.querySelectorAll(".game-card").forEach((card, i) => {
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, i * 100); // stagger animation
+      });
+    });
+  </script>
+</body>
+</html>

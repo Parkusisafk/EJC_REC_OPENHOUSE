@@ -1,0 +1,249 @@
+/* typing.css - replace existing file */
+
+:root {
+  --bubble-size: 120px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rajdhani', sans-serif;
+  background: url("space.jpg") center/cover no-repeat;
+  color: black;
+  overflow: hidden;
+}
+
+/* scoreboard (create in HTML or JS) */
+.scoreboard {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.5);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 1000;
+}
+
+/* bubble container */
+.bubble {
+  position: absolute;
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: url("rainbow_bubble.jpg") center/cover no-repeat;
+  /* clean shadow: optional */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  user-select: none;
+  pointer-events: none;
+  transform-origin: center center;
+  z-index: 10;
+}
+
+/* text inside bubble */
+.bubble > .word {
+  position: relative;
+  z-index: 20;
+  pointer-events: none;
+  color: black;        /* default text color */
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+
+/* fire ring overlay */
+.fire-ring {
+  position: absolute;
+  width: calc(var(--bubble-size) + 24px);
+  height: calc(var(--bubble-size) + 24px);
+  left: calc(-12px);
+  top: calc(-12px);
+  background: url("fire_rong.png") center/contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 15;
+  transition: opacity 0.12s linear;
+}
+
+/* visible + rotating when active */
+.bubble.active .fire-ring {
+  opacity: 1;
+  animation: rotateRing 1.2s linear infinite;
+}
+
+/* rotation for fire ring */
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* pop animation applied to the whole bubble (keeps position) */
+@keyframes pop {
+  0%   { transform: scale(1);   opacity: 1; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.4);  opacity: 0; }
+}
+.pop {
+  animation: pop 360ms cubic-bezier(.2,.8,.2,1) forwards;
+  pointer-events: none;
+}
+
+/* Game over panel */
+#game-over {
+  position: absolute;
+  z-index: 2000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 20px 26px;
+  border-radius: 12px;
+  text-align: center;
+  display: none;
+  min-width: 240px;
+}
+
+#game-over button {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #00a0ff;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.ground {
+  position: fixed;         /* stick to bottom */
+  bottom: -20px;               /* at bottom of viewport */
+  left: 0;
+  width: 100%;             /* span full width */
+  height: auto;            /* keep aspect ratio */
+  z-index: 50;             /* above background but below bubbles */
+  pointer-events: none;    /* don’t block typing */
+}
+
+.explosion {
+  position: absolute;
+  width: 100px;           /* adjust size as needed */
+  height: 100px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: explode 400ms ease-out forwards;
+  z-index: 100;
+}
+
+@keyframes explode {
+  0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  50%  { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(5); opacity: 1; }
+}
+
+
+.hud {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  z-index: 1000;
+}
+
+.hud-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#playerName {
+  padding: 6px 10px;
+  font-size: 1rem;
+  width: 150px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+}
+
+.back-btn {
+  padding: 6px 12px;
+  background: #0066ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #0044aa;
+}
+
+#score {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #ffff00;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #12121a;
+  color: #e6e6e6;
+  font-family: 'Rajdhani', sans-serif;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.top-bar .row {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.top-bar .title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #00ccff;
+}
+
+.top-bar .username span,
+.top-bar .score span {
+  font-weight: 700;
+  color: #ffff00;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #0066ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-weight: 700;
+}
+
+.back-btn:hover {
+  background: #0044aa;
+}
+
+/* push game area down so it doesn’t overlap top bar */
+.game-area {
+  position: relative;
+  margin-top: 110px; /* adjust to fit top-bar height */
+}

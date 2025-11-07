@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  background: #0a0a0f;
+  color: #e6e6e6;
+  text-align: center;
+}
+
+header {
+  padding: 2rem 0;
+  background: linear-gradient(90deg, #0066ff, #00ccff);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+main {
+  padding: 2rem;
+}
+
+.intro {
+  margin-bottom: 3rem;
+}
+
+.games {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: #12121a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #222;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #0066ff55;
+}
+
+.game-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  background: #0066ff;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.game-card a:hover {
+  background: #0044aa;
+}
+.game-card {
+  opacity: 1;
+  transform: translateY(15px);
+}
+
+footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  color: #aaa;
+}
+.leaderboard {
+  background: #1a1a28;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  text-align: left;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.leaderboard h5 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.leaderboard-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.leaderboard-list li {
+  margin-bottom: 0.2rem;
+}
