@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scratchy — Full Editor (n=10,k=5)</title>
+  <link rel="stylesheet" href="programming.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header class="top">
+    <h1>programming speedrun scratch knockoff aaaaaa</h1>
+  </header>
+
+  <main class="container">
+    <section class="inputs panel">
+      <div class="label">INPUT (read-only)</div>
+      <div class="inputs-row">
+        <div class="input-pill">n = <span id="dispN">10</span></div>
+        <div class="input-pill">k = <span id="dispK">5</span></div>
+      </div>
+    </section>
+
+    <section class="editor panel">
+      <div id="programArea" class="program-area"></div>
+      <!-- main plus is created by JS and always placed as the last child of programArea -->
+      <div class="editor-controls">
+        <button id="runBtn" class="btn primary">Run</button>
+        <button id="clearBtn" class="btn ghost">Clear</button>
+      </div>
+    </section>
+
+    <section class="panel console-panel">
+      <div class="label">Console</div>
+      <pre id="console" class="console"></pre>
+      <div class="label" style="margin-top:10px">Variables</div>
+      <div id="varsPanel" class="vars"></div>
+    </section>
+  </main>
+
+  <!-- block menu overlay will be created by JS -->
+  <script src="programming.js"></script>
+</body>
+</html>
