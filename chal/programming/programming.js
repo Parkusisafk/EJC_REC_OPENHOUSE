@@ -346,7 +346,7 @@ name.style.fontSize = '12px';
 name.style.padding = '2px 4px';
 name.style.background = 'transparent';
 name.style.color = '#e6eef8';
-name.style.border = '1px solid #555';
+name.style.border = '1px solid #ff0000';
           r1.appendChild(document.createTextNode('Name:')); r1.appendChild(name); b.appendChild(r1);
           const r2 = document.createElement('div'); r2.className='row'; r2.style.marginTop='8px';
           const left = makeValueInput('(value)'); const op = makeSelect(['NONE','+','-','*','/','%'],'NONE'); const right = makeValueInput('(value)');

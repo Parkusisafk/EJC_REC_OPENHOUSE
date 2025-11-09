@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block Programming Tutorial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      background: linear-gradient(180deg, #041226 0%, #071126 100%);
+      color: #e6eef8;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      text-shadow: 0 0 8px rgba(230, 238, 248, 0.6);
+    }
+
+    p, li {
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    /* Step Card */
+    .step-card {
+      background: rgba(10, 20, 40, 0.6);
+      border: 1px solid #3a5bbf;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 24px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Image + Caption Block */
+    .media-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .media-block img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #4a6bd0;
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #a0b8f0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #2a3a5a;
+      font-size: 10px;
+      color: #8aa0d0;
+    }
+ .proceed-btn {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 40px auto 60px;
+      padding: 14px 20px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 14px;
+      background: linear-gradient(to bottom, #4a7bff, #2a50d0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(74, 123, 255, 0.4);
+      transition: all 0.2s;
+    }
+
+    .proceed-btn:hover {
+      background: linear-gradient(to bottom, #5a8aff, #3a60e0);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 123, 255, 0.6);
+    }
+
+    .proceed-btn:active {
+      transform: translateY(1px);
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 12px; }
+      h1 { font-size: 16px; }
+      p, li { font-size: 11px; }
+      .proceed-btn { font-size: 12px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 BLOCK PROGRAMMING TUTORIAL</h1>
+
+    <div class="step-card">
+      <h2>1. Getting Started</h2>
+      <p>
+        Welcome! This visual programming environment lets you build logic using blocks.
+        Start by clicking the <strong>[   +   ]</strong> button at the bottom to add your first block.</p>
+        <p>Note that if you have previous programming experience you can scroll to the bottom to skip this tutorial!
+      </p>
+          <div class="media-block">
+      <img src="[+].png" alt="Add block button">
+      <div class="caption">Click the [ + ] button to open the block menu</div>
+    </div>
+    </div>
+
+
+
+    <div class="step-card">
+      <h2>2. Key Blocks</h2>
+      <ul>
+        <li><strong>Set variable</strong>: Store values in named variables (e.g., <code>ans = 5</code>).</li>
+        <li><strong>If - Else</strong>: Run code conditionally based on comparisons.</li>
+        <li><strong>Repeat</strong>: Loop a fixed number of times.</li>
+        <li><strong>Output answer</strong>: Print results to the console.</li>
+      </ul>
+    </div>
+
+
+    <div class="step-card">
+      <h2>3. IF-ELSE block</h2>
+      <p>
+        if(going to rain)
+      </p>
+      <p>  I bring umbrella</p>
+      <p>else</p>
+      <p>  I dont bring umbrella</p>
+      <p>Thats clear? Well the IF-ELSE block offers 3 input fields:</p>
+      <ul>
+        <li><code>Condition: if this is true, then the code below runs</code></li>
+        <li><code>True branch: Whats getting ran when condition is true</code></li>
+        <li><code>False branch: Whats getting ran when condition is false</code></li>
+      </ul>
+    <div class="media-block">
+      <img src="ifelse_explaination.png" alt="n and k values">
+    </div>
+    </div>
+
+
+
+    <div class="step-card">
+      <h2>4. Conditions</h2>
+      <p>
+        Remember algebra? Introducing variables, which are letters/words/symbols that correspond to a certain value
+        , and can be used for various purposes. Such example include the input variables given. A value is given to "n".
+      </p>
+      <p>
+        <ul>
+            <li><code>== checks to see if both sides are equal. For example 5 == 5 returns true!</code></li>
+        <li><code>!= checks to see if both sides are not equal. For example 3 != 2 returns true!</code></li>
+              <li><code>NONE (the one you saw above) simply means that you are only using one argument, you can leave the other (value) blank
+              </code></li>
+              <li><code>apart from NONE, we have other arithmetic options:</code></li>
+              <li><code>'+', standing for addition between 2 numbers</code></li>
+              <li><code>'-', standing for subtraction</code></li>
+              <li><code>'*', standing for multiplication. Eg. 5*7 = 35</code></li>
+              <li><code>'/', standing for division and rounding down. Eg. 23 / 5 = 4</code></li>
+              <li><code>'%', standing for remainder after division. Eg. 23 % 5 = 3</code></li>
+      </ul>
+      </p>
+
+
+
+
+
+<div class="media-block">
+      <img src="condition.png" alt="n and k values">
+      <div class="caption">Output is 2 btw, since 11 % 4 = 3, and 3 != 3 is false, thus else loop runs</div>
+    </div>
+    </div>
+
+
+          <div class="step-card">
+      <h2>5. Variable Manipulation</h2>
+      <p>Using the "Set variable" block</p>
+      <p>
+        You can create a new variable of any name, give it a value, and modify its value like so
+        </p>
+        <p><strong>Note that by default you will have at least one input variable 'n', if its 2 then you will also have 'k'</strong></p>
+    <div class="media-block">
+      <img src="variables.png" alt="n and k values">
+    </div>
+    </div>
+
+    <div class="step-card">
+      <h2>6. Repeat block</h2>
+      <p>This block will repeatedly execute a piece of code by a number of times you make it to :D</p>
+      <p>
+        Yes, you can put a repeat block inside another repeat block!
+        </p>
+    <div class="media-block">
+      <img src="repeat.png" alt="n and k values">
+      <div class="caption">This is equivilant to setting k = (k + 5n)</div>
+
+    </div>
+    </div>
+
+          <div class="step-card">
+      <h2>7. While block</h2>
+      <p>This is another repeat block, and it will keep executing the code below infinitely until the condition returns false</p>
+      <p>
+        Its quite dangerous if you screw up the conditions, as the code will run infinitely and never stop!
+        </p>
+        <p><strong>Good usage:</strong></p>
+    <div class="media-block">
+      <img src="whilegood.png" alt="n and k values">
+    </div>
+      <p><strong>Bad usage:</strong></p>
+      <div class="media-block">
+      <img src="whilebad.png" alt="n and k values">
+    </div>
+    </div>
+
+        <div class="step-card">
+      <h2>8. Repeat block</h2>
+      <p>As you may or may not have found out, this block outputs anything you want</p>
+      <p>It is for submission of your answer!</p>
+    <div class="media-block">
+      <img src="output.png" alt="n and k values">
+
+    </div>
+    </div>
+
+
+<a id="proceedLink" href="#" class="proceed-btn">PROCEED TO CHALLENGE</a>
+
+<footer>
+  Made with 💜 | Visual Block Programming Environment
+</footer>
+
+<script>
+  // Get current directory path and build link relative to it
+  const currentPath = window.location.pathname; // e.g., "/chal/programming/tutorial.html"
+  const dir = currentPath.substring(0, currentPath.lastIndexOf('/')); // "/chal/programming"
+  const username = new URLSearchParams(window.location.search).get('username');
+  const filename = 'programming.html';
+  const url = username 
+    ? `${dir}/${filename}?username=${encodeURIComponent(username)}`
+    : `${dir}/${filename}`;
+
+  document.getElementById('proceedLink').href = url;
+</script>
+<footer>
+EJC OPEN HOUSE    </footer>
+  </div>
+</body>
+</html>
