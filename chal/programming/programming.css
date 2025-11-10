@@ -90,3 +90,83 @@ select,input[type="text"],input[type="number"]{background:transparent;border:1px
   color: #ff0000;
   border: 2px solid #ffffff;
 }
+
+/* Sample test list rows */
+.sample-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:6px;margin-top:6px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+.sample-row.pass{border-color: rgba(34,197,94,0.6);background: rgba(34,197,94,0.06)}
+.sample-row.fail{border-color: rgba(239,68,68,0.6);background: rgba(239,68,68,0.04)}
+.sample-row .meta{font-size:12px;color:var(--muted)}
+#resultBody .test-detail{padding:8px;border-radius:6px;margin-top:6px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02)}
+
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; /* ← This is your horizontal space! Adjust as needed */
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.meta-input,
+.meta-expected {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: #e6eef8;
+}
+
+/* Optional: on small screens, stack vertically */
+@media (max-width: 600px) {
+  .meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.level-desc {
+  color: #a0d6ff; /* soft blue — readable on dark bg */
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+/* Animated result popup */
+#resultPopup {
+  display: flex; /* always flex for smooth transition */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+#resultPopup.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#resultCard {
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#resultPopup.show #resultCard {
+  transform: translateY(0);
+}
+
+.test-detail {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: #e6eef8;
+}
+
+.test-detail code {
+  color: #66ffff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 5px;
+  border-radius: 4px;
+}

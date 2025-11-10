@@ -14,19 +14,44 @@
   </header>
 
   <main class="container">
-    <section class="inputs panel">
-      <div class="label">INPUT (read-only)</div>
-      <div class="inputs-row">
-        <div class="input-pill">n = <span id="dispN">10</span></div>
-        <div class="input-pill">k = <span id="dispK">5</span></div>
-      </div>
-    </section>
+<section class="inputs panel" id="levelHeader">
+  <div id="levelInfo">
+    <div class="label small muted">Level <span id="levelNumber">1</span> / 10</div>
+    <div id="levelTitle" style="font-weight:700;margin-top:6px">Loading level...</div>
+    <div id="levelDesc" class="small muted" style="margin-top:6px">Description text</div>
+
+    <div id="sampleTests" style="margin-top:10px">
+      <!-- sample testcases will be injected here -->
+    </div>
+
+    <!-- compact timer + tracker -->
+    <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
+<div class="small muted">Time left: <span id="levelTimer" style="color:#ff6b6b;">05:00</span></div>
+<div class="small muted">Blocks used: <span id="lastBlocks" style="color:#5aff9e;">0</span></div>
+<div class="small muted">Solved: <span id="trackerSolved" style="color:#66ffff;">0</span></div>
+    </div>
+  </div>
+</section>
+
 
     <section class="editor panel">
       <div id="programArea" class="program-area"></div>
       <!-- main plus is created by JS and always placed as the last child of programArea -->
       <div class="editor-controls">
         <button id="runBtn" class="btn primary">Run</button>
+        <button id="submitBtn" class="btn primary" style="background: #1fbf4a; margin-left:8px;">Submit</button>
+<button id="endChallengeBtn" class="btn ghost" style="font-family:'Press Start 2P',monospace;font-size:12px;margin-top:10px;color:#ff6b6b;border:1px solid #ff6b6b;background:transparent;transition:background 0.2s;">
+  End Challenge
+</button>
+
+<script>
+  // Add hover effect
+  const btn = document.getElementById('endChallengeBtn');
+  if (btn) {
+    btn.onmouseover = () => btn.style.background = 'rgba(255, 107, 107, 0.15)';
+    btn.onmouseout = () => btn.style.background = 'transparent';
+  }
+</script>
         <button id="clearBtn" class="btn ghost">Clear</button>
       </div>
     </section>
@@ -38,6 +63,19 @@
       <div id="varsPanel" class="vars"></div>
     </section>
   </main>
+
+
+  <!-- Result popup (hidden by default) -->
+<div id="resultPopup" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:99999;align-items:center;justify-content:center;">
+  <div id="resultCard" style="background:var(--card);padding:18px;border-radius:10px;max-width:720px;width:90%;">
+    <div id="resultTitle" style="font-weight:800;font-size:16px">Results</div>
+    <div id="resultBody" style="margin-top:8px;max-height:48vh;overflow:auto;"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px;">
+      <button id="resultClose" class="btn ghost">Close</button>
+      <button id="resultNext" class="btn primary" style="display:none;background:var(--accent);">Proceed to next level</button>
+    </div>
+  </div>
+</div>
 
   <!-- block menu overlay will be created by JS -->
   <script src="programming.js"></script>
