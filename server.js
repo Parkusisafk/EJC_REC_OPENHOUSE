@@ -102,7 +102,7 @@ app.post("/clear-leaderboards", (req, res) => {
   const leaderboardDirs = [
     path.join(__dirname, "chal", "typing", "leaderboard", "leaderboard.txt"),
     path.join(__dirname, "chal", "programming", "leaderboard.txt"),
-    path.join(__dirname, "chal", "encryption", "leaderboard.txt"),
+    path.join(__dirname, "chal", "crypto", "leaderboard.txt"),
     path.join(__dirname, "chal", "logic", "leaderboard.txt")
   ];
 
