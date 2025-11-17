@@ -67,6 +67,31 @@ function pickUniqueWord() {
                       : WORDS[Math.floor(Math.random() * WORDS.length)];
 }
 
+function getNonOverlappingX() {
+  const minGap = 20; // horizontal spacing between bubbles (px)
+  const maxAttempts = 50;
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    const x = Math.random() * (window.innerWidth - BUBBLE_SIZE);
+    let ok = true;
+
+    for (const other of bubbles) {
+      const otherX = parseFloat(other.style.left || 0);
+
+      // check horizontal distance
+      if (Math.abs(x - otherX) < BUBBLE_SIZE + minGap) {
+        ok = false;
+        break;
+      }
+    }
+
+    if (ok) return x;
+  }
+
+  // fallback: just random if can't find space
+  return Math.random() * (window.innerWidth - BUBBLE_SIZE);
+}
+
 // create bubble DOM
 function createBubble(word) {
   const b = document.createElement("div");
@@ -74,7 +99,7 @@ function createBubble(word) {
   b.word = word;
   b.progress = 0;        // number of chars highlighted
   b.speed = 1 + Math.random() * 1.6; // px per frame-ish (we'll scale with a delta)
-  b.style.left = Math.random() * (window.innerWidth - BUBBLE_SIZE) + "px";
+  b.style.left = getNonOverlappingX() + "px";
   b.style.top = -BUBBLE_SIZE + "px"; // start above screen slightly
 
   // fire ring overlay
@@ -173,7 +198,7 @@ function loop(now) {
     // move bubble down
     const top = parseFloat(b.style.top || 0);
     let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.15) - 0.6);
-    if(timeElapsed > 30) scaledSpeed = Math.pow(scaledSpeed,Math.pow(Math.log10(timeElapsed),0.5))
+    if(timeElapsed > 30) scaledSpeed = Math.pow(scaledSpeed,Math.pow(Math.log10(timeElapsed),0.3))
     const dy = scaledSpeed * dt;
     const newTop = top + dy;
     b.style.top = newTop + "px";
