@@ -93,7 +93,7 @@ grid-auto-rows: 30px; */
     height: 300px;
     width: 300px;
     background-color: rgba(0,0,0,0.75);
-    display: grid;
+    display: none;
     position: fixed;
     border-radius: 10%;
     grid-template-columns: repeat(3,33%);
@@ -112,6 +112,17 @@ grid-auto-rows: 30px; */
 #decryptor >div:hover{
     color: white;
     border-color:white;
+}
+
+#deletor{
+    display: flex;
+    font-size: 17px !important;
+    align-items: center;
+    justify-content: center;
+}
+
+#deletor:hover{
+    color:red !important;
 }
 .disabled{
     pointer-events:none;

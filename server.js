@@ -79,7 +79,12 @@ if (fs.existsSync(filePath)) {
   }
 
   // sort descending
+  if (gameType="crypto"){
+    lines.sort((a,b)=>a.score-b.score)//because less time is better
+  }
+  else{
   lines.sort((a,b) => b.score - a.score);
+  }
 
   const output = lines.map(l => `${l.name},${l.score}`).join("\n");
   fs.writeFileSync(filePath, output);
