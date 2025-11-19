@@ -79,7 +79,7 @@ if (fs.existsSync(filePath)) {
   }
 
   // sort descending
-  if (gameType="crypto"){
+  if (gameType==="crypto"){
     lines.sort((a,b)=>a.score-b.score)//because less time is better
   }
   else{
