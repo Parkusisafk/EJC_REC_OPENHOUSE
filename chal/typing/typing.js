@@ -205,7 +205,7 @@ function loop(now) {
 
     // check if bottom of bubble hits ground
     const bottom = newTop + BUBBLE_SIZE;
-    if (bottom >= groundY) {
+    if (bottom >= groundY+10) {
     // spawn explosion at bubble center
     const exp = document.createElement("img");
     exp.src = "explosion.png";

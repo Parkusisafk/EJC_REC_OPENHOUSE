@@ -79,22 +79,6 @@
   <script src="script.js"></script>
 
   <script>
-    // Enable all Play buttons
-    const playBtns = document.querySelectorAll(".play-btn");
-    playBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const card = btn.closest(".game-card");
-        const usernameInput = card.querySelector(".username");
-        const username = usernameInput.value.trim();
-        if(!username){
-          alert("Please enter a username!");
-          return;
-        }
-        const link = btn.dataset.link;
-        window.location.href = link + "?username=" + encodeURIComponent(username);
-      });
-    });
 
     // optional: fade-in animation
     window.addEventListener("load", () => {
