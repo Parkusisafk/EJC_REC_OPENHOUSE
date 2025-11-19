@@ -96,7 +96,7 @@ for(let l of letters){
             }, 100);
         }
         for(let t of document.getElementById('decryptor').getElementsByTagName('div')){
-            if(t.textContent.includes(ctc)){
+            if(t.textContent.includes(ctc) && !t.textContent.includes("CaNcel")){
                 t.textContent=t.textContent[0] +' => ?'
                 t.classList.toggle("disabled")
             }
@@ -120,6 +120,12 @@ deletor.addEventListener("click", ()=>{
                 c.classList.toggle("hover")
             }, 100);
         }
+    for(let t of document.getElementById('decryptor').getElementsByTagName('div')){
+            if(t.textContent.includes(ctc) && !t.textContent.includes("CaNcel")){
+                t.textContent=t.textContent[0] +' => ?'
+                t.classList.toggle("disabled")
+            }
+        } // Oops, forgot to add this
 })
 decryptor.appendChild(deletor)
 // The decryptor is off if click is out of bounds
