@@ -148,7 +148,8 @@ i love ctfs and ctfs love me`,
 <br>- i love building car/f1/motorcycle lego 🏎️
 <br>- used to code discord bots using custom programming languages 🥳
 <br>- learnt c++, html, python and more before but forgot mostly...🤣
-<br>- plays valorant with friends for fun only (non competitively) 😝`,
+<br>- plays valorant with friends for fun only (non competitively) 😝
+<br>my instagram: xr.lightning`,
 'f':`Lie Huan Teng
 <br>
 Rookie in any form of code (here for the vibes)`,
