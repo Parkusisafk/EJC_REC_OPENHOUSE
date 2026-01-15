@@ -206,7 +206,7 @@ Description: can’t code but he likes Lego and robotics and planes too, I love 
 
 <img src="https://tinyurl.com/45js4zh4" alt="yippee" width="500">
 
-</body> <button onclick="window.location.href='index.html';">Go to Home</button>
+</body> 
 </html>
 <style>
 @font-face {
