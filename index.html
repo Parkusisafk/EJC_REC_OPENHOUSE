@@ -108,9 +108,9 @@
     document.getElementById("clear-leaderboards").addEventListener("click", async () => {
   const pwd = prompt("Enter admin password:");
   if (!pwd) return;
-  const hash = await sha256(pwd);
-  const correctHash = "b6444c25e10ad13e4472e9d243c8cc2b4bbe7fc73d79847e13a9d3da22f5b400";
-  if (hash !== correctHash) {
+  //const hash = await sha256(pwd);
+  //const correctHash = "b6444c25e10ad13e4472e9d243c8cc2b4bbe7fc73d79847e13a9d3da22f5b400";
+  if (pwd !== "1234") {
     alert("Incorrect password!");
     return;
   }
