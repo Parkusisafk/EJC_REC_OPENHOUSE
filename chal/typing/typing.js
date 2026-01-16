@@ -11,14 +11,14 @@ const WORDS = [
   "new","delete","typeof","this","object","array",
   "string","number","boolean","prototype","int","long",
   "database","main","python","java","javascript","compiler",
-  "linux","commandline",
-  "pointer","memory","character","null","void","NaN","undefined",
+  "linux",
+  "pointer","memory","character","null","void","undefined",
   "github","server","byte","bit","quadword","shell","exploit",
   "error","timeout","debugging","decompile",
-  "compression","input","output","buffer","stackoverflow",
-  "gitlab","gitpush","ipaddress","DNS","http","https",
+  "input","output","buffer",
+  "gitlab","http","https",
   "port","request","response","header",
-  "footer","hash","cryptography","packets","automation"
+  "footer","hash","packets","automation"
 ];
 
 const MAX_BUBBLES = 5;
@@ -197,7 +197,7 @@ function loop(now) {
 
     // move bubble down
     const top = parseFloat(b.style.top || 0);
-    let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.15) - 0.6);
+    let scaledSpeed = b.speed * (Math.pow(Math.max(timeElapsed, 1) + 1, 0.1) - 0.6);
     if(timeElapsed > 30) scaledSpeed = Math.pow(scaledSpeed,Math.pow(Math.log10(timeElapsed),0.3))
     const dy = scaledSpeed * dt;
     const newTop = top + dy;
@@ -432,3 +432,4 @@ window.addEventListener("load", () => {
 
   startGame(); // start your bubble typing game
 });
+
