@@ -913,9 +913,12 @@ endChallengeBtn?.addEventListener('click', () => {
         gameType: "programming"
       })
     })
-    .then(res => res.json())
-    .then(data => console.log("Leaderboard updated:", data))
-    .catch(err => console.error("Failed to update leaderboard:", err));
+    .then(async res => {
+    const text = await res.text()
+    console.log("RAW RESPONSE:", text)
+    return text
+  })
+  .catch(err => console.error("Failed:", err));
 
     // Show "time ran out" style end screen
     showEndScreen(false, score, forcedTimeSec, blocksUsed, solved);
