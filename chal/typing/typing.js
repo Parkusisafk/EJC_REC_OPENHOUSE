@@ -432,3 +432,4 @@ window.addEventListener("load", () => {
 
   startGame(); // start your bubble typing game
 });
+

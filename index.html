@@ -3,19 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="REC.png" type="image/png">
   <title>REC Open House | Computing</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>REC Open House</h1>
-    <p class="subtitle">Subtitle</p>
+    <img src="REC.png" alt="" style="width:10%;border-radius: 50%;" onclick="document.body.classList.toggle('redirect');setTimeout(()=>{window.location.href='https:/\/\sites.google.com/ejc.edu.sg/ejc-rec'},3500);">
   </header>
 
   <main>
     <section class="intro">
-      <h2>Title</h2>
-      <p>Info</p>
+      <button onclick="document.body.classList.toggle('redirect');setTimeout(()=>{window.location.href='./logo.html'},3500);" class="play-btn" style="display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    background: black;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: large;
+    width:20%;">👥 Members</button>
+    <button onclick="document.body.classList.toggle('redirect');setTimeout(()=>{window.location.href='https:/\/\sites.google.com/ejc.edu.sg/ejc-rec'},3500);" class="play-btn" style="display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    background: black;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: large;
+    width:20%;">Main REC website! 💻</button>
     </section>
 
     <section class="games">
@@ -54,18 +71,6 @@
           <input type="text" class="username" placeholder="Enter your username" />
           <a href="#" class="play-btn" data-link="chal/crypto/index.html">Play Now</a>
         </div>
-
-        <div class="game-card" data-leaderboard="chal/logic/leaderboard/leaderboard.txt">
-          <h4>🕹️ Logic Simulator</h4>
-          <p>Build virtual logic gates and circuits.</p>
-          <div class="leaderboard">
-            <h5>Leaderboard (Top 5)</h5>
-            <ol class="leaderboard-list"><li>Loading...</li></ol>
-          </div>
-          <input type="text" class="username" placeholder="Enter your username" />
-          <a href="#" class="play-btn" data-link="chal/logic.html">Play Now</a>
-        </div>
-
       </div>
 
       <button id="clear-leaderboards" class="admin-btn">🧹 Clear All Leaderboards</button>
@@ -73,28 +78,13 @@
   </main>
 
   <footer>
-    <p>© 2025 REC Computing | Created for Open House</p>
+    <p>© 2025 REC Computing | Created for Open House </p>
+    <p>Games were made by Zhang Di and Hong Xi</p>
   </footer>
 
   <script src="script.js"></script>
 
   <script>
-    // Enable all Play buttons
-    const playBtns = document.querySelectorAll(".play-btn");
-    playBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const card = btn.closest(".game-card");
-        const usernameInput = card.querySelector(".username");
-        const username = usernameInput.value.trim();
-        if(!username){
-          alert("Please enter a username!");
-          return;
-        }
-        const link = btn.dataset.link;
-        window.location.href = link + "?username=" + encodeURIComponent(username);
-      });
-    });
 
     // optional: fade-in animation
     window.addEventListener("load", () => {
@@ -118,9 +108,9 @@
     document.getElementById("clear-leaderboards").addEventListener("click", async () => {
   const pwd = prompt("Enter admin password:");
   if (!pwd) return;
-  const hash = await sha256(pwd);
-  const correctHash = "b6444c25e10ad13e4472e9d243c8cc2b4bbe7fc73d79847e13a9d3da22f5b400";
-  if (hash !== correctHash) {
+  //const hash = await sha256(pwd);
+  //const correctHash = "b6444c25e10ad13e4472e9d243c8cc2b4bbe7fc73d79847e13a9d3da22f5b400";
+  if (pwd !== "1234") {
     alert("Incorrect password!");
     return;
   }

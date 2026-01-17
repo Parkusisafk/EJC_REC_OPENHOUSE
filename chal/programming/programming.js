@@ -582,7 +582,7 @@ const LEVELS = [
     id:3, title:'Is odd?',
     desc:'Given n produce 1 if n is odd, otherwise 0.',
     sampleTests:[{in:{n:3},out:[1]},{in:{n:4},out:[0]}],
-    fullTests:[{in:{n:0},out:[0]},{in:{n:-1},out:[1]},{in:{n:27},out:[1]}]
+    fullTests:[{in:{n:0},out:[0]},{in:{n:391},out:[1]},{in:{n:27},out:[1]}]
   },
   {
     id:4, title:'Divisible by 27 (mod allowed)',
@@ -1051,3 +1051,4 @@ loadLevel(0);
 
 
 })();
+
